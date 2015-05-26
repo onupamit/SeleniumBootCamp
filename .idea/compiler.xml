@@ -25,12 +25,14 @@
         <processorPath useClasspath="true" />
         <module name="Amazon" />
         <module name="Common" />
+        <module name="TaxiFareUs" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Amazon" target="1.5" />
       <module name="Common" target="1.5" />
       <module name="SeleniumBootCamp" target="1.5" />
+      <module name="TaxiFareUs" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>
