@@ -1,6 +1,5 @@
-/**
- * Created by shamimchy on 5/27/15.
- */
+package website;
+
 import base.baseApi.Base;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -20,6 +19,8 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.AfterMethod;
+
+
 
 
 public class TaxiFareTestCript extends Base{

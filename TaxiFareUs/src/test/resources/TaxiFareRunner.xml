@@ -18,7 +18,7 @@
         <classes>
             <!--<class name="website.TaxiFareHome"/>-->
             <!--<class name="website.TaxiFareTestCheck"/>-->
-            <class name="TaxiFareTestCript"/>
+            <class name="website.TaxiFareTestCript"/>
         </classes>
     </test>
 
