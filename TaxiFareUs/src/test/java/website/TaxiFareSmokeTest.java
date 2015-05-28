@@ -23,7 +23,7 @@ import org.testng.annotations.AfterMethod;
 
 
 
-public class TaxiFareTestCript extends Base{
+public class TaxiFareSmokeTest extends Base{
 //   public WebDriver driver = null;
 
 /*
