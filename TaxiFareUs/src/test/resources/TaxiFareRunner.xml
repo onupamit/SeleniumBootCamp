@@ -17,8 +17,8 @@
     <test name = " TaxiFare Home Page ">
         <classes>
             <!--<class name="website.TaxiFareHome"/>-->
-            <!--<class name="website.TaxiFareTestCheck"/>-->
-            <class name="website.TaxiFareTestCript"/>
+            <class name="website.TaxiFareTestCheck"/>
+            <!--<class name="website.TaxiFareTestCript"/>-->
         </classes>
     </test>
 
