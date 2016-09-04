@@ -25,6 +25,12 @@
         <processorPath useClasspath="true" />
         <module name="Amazon" />
         <module name="Common" />
+      </profile>
+      <profile default="false" name="Annotation profile for TaxiFareUs" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
         <module name="TaxiFareUs" />
       </profile>
     </annotationProcessing>
@@ -32,7 +38,7 @@
       <module name="Amazon" target="1.5" />
       <module name="Common" target="1.5" />
       <module name="SeleniumBootCamp" target="1.5" />
-      <module name="TaxiFareUs" target="1.5" />
+      <module name="TaxiFareUs" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

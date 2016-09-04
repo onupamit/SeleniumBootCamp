@@ -1,8 +1,5 @@
 package taxifareApi;
 
-/**
- * Created by shamimchy on 5/26/15.
- */
 import base.baseApi.Base;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -11,16 +8,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class TaxifareBase extends Base {
+
+
+
+public class TaxiFareBase extends Base {
     public static List<String> menu = new ArrayList<String>();
 
     public static String [] list = {
-            "United States of America",
-            "France",
+            " United States of America ",
+            " France",
             "Japan",
             "United Arab Emirates",
-            "Unied Kingdom",
-            "United States of America"        ,
+            " Unied Kingdom",
+            " United States of America "        ,
 
     } ;
     public void setItems(String [] list){

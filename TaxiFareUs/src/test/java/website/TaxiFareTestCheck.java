@@ -1,19 +1,22 @@
 package website;
 
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import taxifareApi.TaxiFareBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.Select;
+
+import java.io.IOException;
 import java.util.List;
 import org.openqa.selenium.WebElement;
 
 
-public class TaxiFareTestCheck extends taxifareApi.TaxiFareBase{
+public class TaxiFareTestCheck extends TaxiFareBase{
 
 
     @Test
-    public void taxifareHomePage()throws InterruptedException{
+    public void taxifareHomePage()throws InterruptedException, IOException{
         System.out.println(driver.getCurrentUrl());
 //      //  typeAndEnterByCss("#countrySelect", "book");
 //       // sleepFor(4);
@@ -26,7 +29,7 @@ public class TaxiFareTestCheck extends taxifareApi.TaxiFareBase{
 //        }
 //        sleepFor(5);
         String title = driver.getTitle();
-        System.out.println("The Title of The web is " + title);
+        System.out.println("The Title of The website is (TaxiFareTestCheck) : " + title);
 
         setItems(TaxiFareTestCheck.list);
         getItems();
@@ -46,7 +49,8 @@ public class TaxiFareTestCheck extends taxifareApi.TaxiFareBase{
 
 
 
-        for (int i = 0; i< listCountry.size(); i++ ){
+           // for (int i = 0; i< listCountry.size(); i++ ){
+            for (int i = 0; i< 5; i++ ){
 
 
             new Select(driver.findElement(By.id("countrySelect"))).selectByVisibleText(listCountry.get(i));
@@ -309,6 +313,80 @@ public class TaxiFareTestCheck extends taxifareApi.TaxiFareBase{
 
             }
 
+            else if(i== 5) {
+                List<String> listUSACity5 = searchDropDownMenu("#cityselect option");
+
+                System.out.println("\n -> Country : "+ listCountry.get(i)+ " Total Cities :"+listUSACity5.size() );
+
+                displayText(listUSACity5);
+                Thread.sleep(2000);
+                //  new Select(driver.findElement(By.id("countrySelect"))).selectByVisibleText(listMenu.get(i));
+
+
+
+                //  new Select(driver.findElement(By.id("countrySelect"))).selectByValue('"'+listMenu.get(0)+'"');
+                // .selectByVisibleText("United States of America");
+
+                //  for (int j = 0; j < listUSACity.size(); j++) {
+                for (int j = 0; j < 5; j++) {
+                    if(j>0){
+                        System.out.println("\n City:-->  "+listUSACity5.get(j)  );
+
+                        new Select(driver.findElement(By.id("cityselect"))).selectByVisibleText(listUSACity5.get(j));
+
+                        // new Select(driver.findElement(By.xpath(".//*[@id='cityselect']"))).selectByVisibleText(listCity.get(7));
+                        //  new Select(driver.findElement(By.id("#cityselect")).selectByVisibleText();
+
+
+                        driver.findElement(By.id("fromAddress")).clear();
+                        driver.findElement(By.id("fromAddress")).sendKeys("1000, 5th ave, ny");
+
+                        // new Select(driver.findElement(By.id("toDirectory"))).selectByVisibleText("1900 5th Ave, New York, NY 10065");
+                        driver.findElement(By.id("toAddress")).clear();
+                        driver.findElement(By.id("toAddress")).sendKeys("1900 5th Ave, New York, NY 10065");
+                        driver.findElement(By.name("submit")).click();
+                        Thread.sleep(2000);
+
+
+                        //------------------------------------------
+
+                        WebElement select = driver.findElement(By.id("fromDirectory"));
+                        List<WebElement> options = select.findElements(By.tagName("option"));
+                        for (WebElement option : options) {
+                            // if(select.getAttribute("value") != "") {
+                            //         System.out.println(select.getAttribute("value"));
+
+                            //  System.out.println( option.getText() + " ----- GetAttribute-----"+ " "+"  " + select.getAttribute("value"));
+                            System.out.print(option.getText());
+                            //   System.out.println(select.getAttribute("value"));
+//                  if ("Upper West Side (85th & Amst)".equals(option.getText()))
+//                      System.out.print(option.getText());
+
+//                          if(option.getLocation().equals(1)){
+//                              System.out.print("");
+//
+//                          }
+                            //  option.click();
+                            // }
+
+
+                        }
+
+
+
+                    }
+
+                    else {
+
+                        System.out.println(driver.getCurrentUrl());
+                        String title0 = driver.getTitle();
+                        System.out.println("The Title of The web is " + title0);
+                    }
+                }
+                Thread.sleep(2000);
+            }
+
+
 
 
 //            new Select(driver.findElement(By.id("countrySelect"))).selectByVisibleText(listMenu.get(i+1));
@@ -386,6 +464,9 @@ public class TaxiFareTestCheck extends taxifareApi.TaxiFareBase{
 
     }
 
-
+    @AfterMethod
+    public void afterMethod() {
+        driver.quit();
+    }
 
 }

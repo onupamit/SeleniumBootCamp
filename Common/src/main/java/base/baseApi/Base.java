@@ -41,8 +41,8 @@ public class Base {
     @BeforeMethod
     public void setUp(@Optional("false")boolean useSauceLabs,@Optional("rahmanww")String userName,
                       @Optional("ssk")String key, @Optional("WIN8")String os,@Optional("firefox") String browserName,
-                      @Optional("35")String browserVersion,@Optional("http://piit.us") String url)throws IOException{
-        if(useSauceLabs == true){
+                      @Optional("34")String browserVersion,@Optional("http://piit.us") String url)throws IOException{
+        if(useSauceLabs == false){
             setUpCloudEnviornment(userName,key,os,browserName,browserVersion,url);
         }else{
             getLocalDriver(browserName, browserVersion, url);
@@ -60,13 +60,13 @@ public class Base {
         this.driver = new RemoteWebDriver(new URL("http://"+userName +":"+ key + "@ondemand.saucelabs.com:80/wd/hub"), cap);
         driver.navigate().to(url);
         driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
-        driver.manage().window().maximize();
+      //  driver.manage().window().maximize();
     }
     public void getLocalDriver(String browserName,String browserVersion, String url){
         if(browserName.equalsIgnoreCase("firefox")){
             driver = new FirefoxDriver();
         } else if(browserName.equalsIgnoreCase("chrome")){
-            System.setProperty("webdriver.chrome.driver", "../Common/selenium-driver/chromedriver.exe");
+            System.setProperty("webdriver.chrome.driver", "Common/selenium-driver/chromedriver");
             driver = new ChromeDriver();
         }else if(browserName.equalsIgnoreCase("safari")){
             driver = new SafariDriver();
@@ -76,7 +76,7 @@ public class Base {
         }
 
         driver.navigate().to(url);
-        driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(25,TimeUnit.SECONDS);
         driver.manage().window().maximize();
     }
 
