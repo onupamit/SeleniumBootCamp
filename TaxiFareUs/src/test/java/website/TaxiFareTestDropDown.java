@@ -52,7 +52,7 @@ public class TaxiFareTestDropDown extends TaxiFareBase {
 
             System.out.println("\n\n ---listMenu.size()-----" + listMenu.size());
 
-            for (int i = 0; i < listMenu.size(); i++) {
+            for (int i = 0; i < listMenu.size()-1; i++) {
 
 //                new Select(driver.findElement(By.id("countrySelect"))).selectByVisibleText(listMenu.get(i));
 

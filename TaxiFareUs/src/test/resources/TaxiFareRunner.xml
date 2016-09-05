@@ -3,7 +3,7 @@
 <suite name="TaxiFareUS test on Web browser" >
 
 
-    <parameter name = "useSauceLabs" value = "true"/>
+    <parameter name = "useSauceLabs" value = "false"/>
     <parameter name = "userName" value = "shamimchy"/>
     <parameter name = "key" value = "05144fd9-ac5f-4347-84d3-b6cc0254566a"/>
     <parameter name = "os" value = "WIN8"/>
@@ -16,9 +16,9 @@
 
     <test name = " TaxiFare Home Page ">
         <classes>
-            <class name="website.TaxiFareTestDropDown"/>
+            <!--<class name="website.TaxiFareTestDropDown"/>-->
             <!--<class name="website.TaxiFareTestCheck"/>-->
-            <!--<class name="website.TaxiFareSmokeTest"/>-->
+            <class name="website.TaxiFareSmokeTest"/>
         </classes>
     </test>
 

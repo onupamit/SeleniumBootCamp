@@ -40,21 +40,25 @@ public class Base {
     @Parameters ({"useSauceLabs","userName", "key","os","browserName","browserVersion","url"})
     @BeforeMethod
     public void setUp(@Optional("false")boolean useSauceLabs,@Optional("rahmanww")String userName,
-                      @Optional("ssk")String key, @Optional("WIN8")String os,@Optional("firefox") String browserName,
+                      @Optional("ssk")String key, @Optional("WIN8")String os,@Optional("firefox")String browserName,
                       @Optional("34")String browserVersion,@Optional("http://piit.us") String url)throws IOException{
-        if(useSauceLabs == false){
+        if(useSauceLabs == true){
             setUpCloudEnviornment(userName,key,os,browserName,browserVersion,url);
         }else{
             getLocalDriver(browserName, browserVersion, url);
         }
 
+        driver.navigate().to(url);
+        driver.manage().timeouts().implicitlyWait(25,TimeUnit.SECONDS);
+        driver.manage().window().maximize();
+
     }
 
-    public void setUpCloudEnviornment(String userName, String key, String os, String browsername,
+    public void setUpCloudEnviornment(String userName, String key, String os, String browserName,
                                       String browserVersion,String url)throws IOException{
 
         DesiredCapabilities cap = new DesiredCapabilities();
-        cap.setBrowserName(browsername);
+        cap.setBrowserName(browserName);
         cap.setCapability("version", browserVersion);
         cap.setCapability("platform", os);
         this.driver = new RemoteWebDriver(new URL("http://"+userName +":"+ key + "@ondemand.saucelabs.com:80/wd/hub"), cap);
@@ -63,12 +67,14 @@ public class Base {
       //  driver.manage().window().maximize();
     }
     public void getLocalDriver(String browserName,String browserVersion, String url){
-        if(browserName.equalsIgnoreCase("firefox")){
-            driver = new FirefoxDriver();
-        } else if(browserName.equalsIgnoreCase("chrome")){
-            System.setProperty("webdriver.chrome.driver", "Common/selenium-driver/chromedriver");
+
+        if(browserName.equalsIgnoreCase("chrome")){
+            System.setProperty("webdriver.chrome.driver", "/Users/shamimchy/IdeaProjects/SeleniumBootCamp/Common/selenium-driver/chromedriver");
             driver = new ChromeDriver();
-        }else if(browserName.equalsIgnoreCase("safari")){
+        } else if(browserName.equalsIgnoreCase("firefox")){
+            driver = new FirefoxDriver();
+        }
+        else if(browserName.equalsIgnoreCase("safari")){
             driver = new SafariDriver();
         } else if(browserName.equalsIgnoreCase("IE")){
             System.setProperty("webdriver.ie.driver" , "../Common/selenium-driver/IEDriverServer.exe");
